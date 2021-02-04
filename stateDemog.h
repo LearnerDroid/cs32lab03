@@ -66,23 +66,17 @@ class stateDemog {
 
     void calculate(){
       for(shared_ptr<demogData> county : counties){
-        popOver65 += county->getpopOver65() * county->getTotalPop();
-        popUnder18 += county->getpopUnder18() * county->getTotalPop();
-        popUnder5 += county->getpopUnder5() * county->getTotalPop();
-        percentUndergraduate += county->getBAup() * county->getTotalPop();
-        percentHighSchool += county->getHSup() * county->getTotalPop();
+        popOver65 += county->getpopOver65();
+        popUnder18 += county->getpopUnder18();
+        popUnder5 += county->getpopUnder5();
+        percentUndergraduate += county->getBAup();
+        percentHighSchool += county->getHSup() ;
         totalPop += county->getTotalPop();
         propPopPov += county->getBelowPoverty();
       }
-      popOver65 /= totalPop;
-      popUnder18 /= totalPop;
-      popUnder5 /= totalPop;
-      percentUndergraduate /= totalPop;
-      percentHighSchool /= totalPop;
-      propPopPov /= totalPop;
     }
 
-    static bool compareP(stateDemog *ps1, stateDemog *ps2) { return ps1->propPopPov < ps2->propPopPov; }
+    static bool compareP(stateDemog *ps1, stateDemog *ps2) { return ps1->propPopPov / ps1->totalPop < ps2->propPopPov / ps2->totalPop; }
 
 private:
     string name;
