@@ -11,28 +11,33 @@ cout << "Testing hospital sort..." << endl;
 
 	dataAQ theAnswers;
 
-    //Would like to add test to query between the two (may need to specify more) 
+  //Would like to add test to query between the two (may need to specify more) 
 
-    //read in a csv file and create a vector of objects representing hospital data
-    std::vector<shared_ptr<hospitalData>> theHospitalData = read_csvHospital(
-            "hospitals.csv", HOSPITAL);
+  //read in a csv file and create a vector of objects representing hospital data
+  std::vector<shared_ptr<hospitalData>> theHospitalData = read_csvHospital(
+          "hospitals.csv", HOSPITAL);
 
-    theAnswers.createStateHospData(theHospitalData);
+  theAnswers.createStateHospData(theHospitalData);
 
-    std::vector<stateHosp*> hospHighToLow;
-    theAnswers.sortStateHospRatingHighLow(hospHighToLow);
+  std::vector<stateHosp*> hospHighToLow;
+  theAnswers.sortStateHospRatingHighLow(hospHighToLow);
 
-    // Test case #1
-    string topHosp[] {"WI", "SD", "UT", "HI", "ID"};
+  // Test case #1
+  string topHosp[] {"WI", "SD", "UT", "HI", "ID"};
 
-    //only test if vector valid
-    if (hospHighToLow.size() > 5 ) {
-      for (int i=0; i < 5; i++) {
-  	   ASSERT_EQUALS(topHosp[i], hospHighToLow.at(i)->getState());
-      }
-    } else {
-      cout << "FAIL due to invalid vector size, size was: " << hospHighToLow.size() << endl;
+  //only test if vector valid
+  if (hospHighToLow.size() > 5 ) {
+    for (int i=0; i < 5; i++) {
+      ASSERT_EQUALS(topHosp[i], hospHighToLow.at(i)->getState());
     }
+  } else {
+    cout << "FAIL due to invalid vector size, size was: " << hospHighToLow.size() << endl;
+  }
+
+  std::vector<shared_ptr<demogData>> theData = read_csv("county_demographics.csv", DEMOG);
+  theAnswers.createStateDemogData(theData);
+  std::vector<stateDemog*> povLowtoHigh;
+  theAnswers.sortStateDemogPovLevelLowHigh(povLowtoHigh);
 
   return 0;
 }

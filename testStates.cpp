@@ -26,9 +26,6 @@ int main() {
     ASSERT_EQUALS("MA", highMort);
 
   	string highReadmit = theAnswers.HighReadmitHospRating();
-  	ASSERT_EQUALS("ID", highReadmit);
-    
-
-
+  	ASSERT_EQUALS("UT", highReadmit);
   return 0;
 }

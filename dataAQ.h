@@ -307,9 +307,20 @@ class dataAQ {
         */
        sort(hospLowToHigh.begin(), hospLowToHigh.end(), &stateHosp::compareOV);
     }
-    void sortStateDemogPovLevelLowHigh(vector<stateDemog *> &incomeHighLow);
+    void sortStateDemogPovLevelLowHigh(vector<stateDemog *> &incomeHighLow) {
+        for(map<string, shared_ptr<stateDemog>>::iterator i = allStateDemogData.begin(); i != allStateDemogData.end(); i++ ){
+            incomeHighLow.push_back(&(*i->second));
+        }
+        sort(incomeHighLow.begin(), incomeHighLow.end(), &stateDemog::compareP);
+        /*
+        cout << incomeHighLow.size() << " bruuuuuh" << endl;
+        for(stateDemog *p : incomeHighLow) {
+            cout << p->getState() << "   " << p->getBelowPoverty() << endl;
+        }
+        */
+    }
     void sortStateDemogPovLevelHighLow(vector<stateDemog *> &povLevelHighLow) {
-      for(map<string, shared_ptr<stateDemog>>::iterator i = allStateDemogData.begin(); i != allStateDemogData.end(); i++ ){
+          for(map<string, shared_ptr<stateDemog>>::iterator i = allStateDemogData.begin(); i != allStateDemogData.end(); i++ ){
             povLevelHighLow.push_back(&(*i->second));
         }
         sort(povLevelHighLow.begin(), povLevelHighLow.end(), &stateDemog::compareP);
