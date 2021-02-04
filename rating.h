@@ -31,11 +31,6 @@ class rating {
     const string getRating() const { return inRS; }
     double getRatingNum() const { return inR; }
 
-    friend std::ostream& operator<<(std::ostream &out, const rating &r) {
-        out << r.inR;
-        return out;
-    }
-
     rating& operator/=(const double Sc) {
         inR /= Sc;
         return *this;

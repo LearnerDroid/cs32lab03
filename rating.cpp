@@ -12,4 +12,8 @@ const string rating::getRating() const {
 
 }
 */
+std::ostream& operator<<(std::ostream &out, const rating &r) {
+    out << r.getRatingNum();
+    return out;
+}
 
