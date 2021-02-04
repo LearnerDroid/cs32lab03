@@ -60,7 +60,7 @@ class stateHosp {
       return avgrate;
     }
 
-    rating getMortality() {
+    const rating getMortality() {
       return mortality;
     }
 
@@ -74,7 +74,7 @@ class stateHosp {
     static bool compareOV(stateHosp *ph1, stateHosp *ph2) { return ph1->avgrate < ph2->avgrate; }
     //static bool compareMV(stateHosp *ph1, stateHosp *ph2) { return ph1->mortality < ph2->mortality; }
     //static bool compareRV(stateHosp *ph1, stateHosp *ph2) { return ph1->readmit < ph2->readmit; }
-  private:
+  public:
     string state;
     double avgrate;
     rating mortality;
