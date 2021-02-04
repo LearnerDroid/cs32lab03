@@ -312,6 +312,7 @@ class dataAQ {
             incomeHighLow.push_back(&(*i->second));
         }
         sort(incomeHighLow.begin(), incomeHighLow.end(), &stateDemog::compareP);
+        reverse(incomeHighLow.begin(), incomeHighLow.end());
         /*
         cout << incomeHighLow.size() << " bruuuuuh" << endl;
         for(stateDemog *p : incomeHighLow) {
@@ -324,7 +325,7 @@ class dataAQ {
             povLevelHighLow.push_back(&(*i->second));
         }
         sort(povLevelHighLow.begin(), povLevelHighLow.end(), &stateDemog::compareP);
-        reverse(povLevelHighLow.begin(), povLevelHighLow.end());
+        //reverse(povLevelHighLow.begin(), povLevelHighLow.end());
     }
     map<string, shared_ptr<stateDemog>> allStateDemogData;
     map<string, shared_ptr<stateHosp>> allStateHospData;
