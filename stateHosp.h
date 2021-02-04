@@ -67,7 +67,7 @@ class stateHosp {
     rating getReadmit() { 
       return readmit;
     }
-
+    friend std::ostream& operator<<(std::ostream &out, const stateHosp &DD);
     static bool compareO(pair<string, shared_ptr<stateHosp>> h1, pair<string, shared_ptr<stateHosp>> h2) { return h1.second->avgrate < h2.second->avgrate; }
     static bool compareM(pair<string, shared_ptr<stateHosp>> h1, pair<string, shared_ptr<stateHosp>> h2) { return h1.second->mortality < h2.second->mortality; }
     static bool compareR(pair<string, shared_ptr<stateHosp>> h1, pair<string, shared_ptr<stateHosp>> h2) { return h1.second->readmit < h2.second->readmit; }
